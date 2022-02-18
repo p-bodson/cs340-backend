@@ -1,0 +1,14 @@
+[Unit]
+Description=cs340-backend Express Server
+
+[Service]
+User=ec2-user
+WorkingDirectory=/home/ec2-user/cs340-backend
+ExecStart=/home/ec2-user/cs340-backend/start.sh
+Restart=on-failure
+LimitNOFILE=4096
+IgnoreSIGPIPE=false
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target
