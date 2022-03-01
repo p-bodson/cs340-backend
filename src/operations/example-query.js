@@ -5,7 +5,7 @@ import pool from '../db-connector.js'
 const example_query = async (req) => {
     let res = {}
     let conn;
-    const query = "SELECT * FROM test;"
+    const query = "SELECT * FROM Authors;"
 
     try {
         conn = await pool.getConnection()
