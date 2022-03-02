@@ -5,6 +5,7 @@ import express from 'express'
 import cors from 'cors'
 import { get_books_and_authors } from './operations/get-books-and-authors.js'
 import { get_books } from './operations/get-books.js'
+import { get_authors } from './operations/get-authors.js'
 
 
 const PORT = 3003
@@ -40,6 +41,18 @@ app.get("/books-and-authors", async (req, res) => {
 app.get("/books", async (req, res) => {
 
     let payload = await get_books(req)
+
+    // ---->
+    // insert error handling here
+    // as needed
+    // <----
+
+    res.send(payload)
+})
+
+app.get("/authors", async (req, res) => {
+
+    let payload = await get_authors(req)
 
     // ---->
     // insert error handling here
