@@ -4,6 +4,7 @@ import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import { get_books_and_authors } from './operations/get-books-and-authors.js'
+import { get_books } from './operations/get-books.js'
 
 
 const PORT = 3003
@@ -27,6 +28,18 @@ app.get("/", async (req, res) => {
 app.get("/books-and-authors", async (req, res) => {
 
     let payload = await get_books_and_authors(req)
+
+    // ---->
+    // insert error handling here
+    // as needed
+    // <----
+
+    res.send(payload)
+})
+
+app.get("/books", async (req, res) => {
+
+    let payload = await get_books(req)
 
     // ---->
     // insert error handling here
