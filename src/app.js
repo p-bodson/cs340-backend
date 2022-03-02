@@ -26,6 +26,10 @@ app.get("/", async (req, res) => {
     // insert error handling here
     // <----
 
+    if (payload == undefined) {
+        payload = {}
+    }
+
     res.send(payload)
 })
 
