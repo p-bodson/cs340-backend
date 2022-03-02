@@ -3,7 +3,6 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
-import { example_query } from './operations/example-query.js'
 import { get_books_and_authors } from './operations/get-books-and-authors.js'
 
 
@@ -20,25 +19,18 @@ app.use(cors());
 
 app.get("/", async (req, res) => {
 
-    
-
-    let payload = await example_query(req)
-
-    // ---->
-    // insert error handling here
-    // <----
+    const payload = {"message": "You've reached the api root. Nothing to see here"}
 
     res.send(payload)
 })
 
 app.get("/books-and-authors", async (req, res) => {
 
-    
-
     let payload = await get_books_and_authors(req)
 
     // ---->
     // insert error handling here
+    // as needed
     // <----
 
     res.send(payload)
