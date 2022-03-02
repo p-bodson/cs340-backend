@@ -1,8 +1,10 @@
 // here is where the heavy lifting of each route goes.
 
-import pool from '../db-connector.js'
+import do_query from './do-query.js'
 
 const get_authors = async (req) => {
+
+    // first build the query
 
     // establish the shema values to be returned from the query
     const schema_keys = ["author_name",
@@ -53,21 +55,8 @@ const get_authors = async (req) => {
     // add the ordering
     query += ` ORDER BY author_ID ASC;`
 
-    // start the database access
-    let res = {}
-    let conn;
-    try {
-        conn = await pool.getConnection()
-        res = await conn.query(query)
-    }
-    catch (err) {
-        throw err;
-    }
-    finally {
-        if (conn) conn.release()
-    }
-
-    return res
+    // then do the query
+    return do_query(query);
 };
 
-export { get_authors }
+export default get_authors

@@ -1,8 +1,10 @@
 // here is where the heavy lifting of each route goes.
 
-import pool from '../db-connector.js'
+import do_query from "./do-query.js";
 
 const get_books = async (req) => {
+
+    // first build the query
 
     // establish the shema values to be returned from the query
     const schema_keys = ["isbn", 
@@ -53,21 +55,8 @@ const get_books = async (req) => {
     // add the ordering
     query += ` ORDER BY isbn ASC;`
 
-    // start the database access
-    let res = {}
-    let conn;
-    try {
-        conn = await pool.getConnection()
-        res = await conn.query(query)
-    }
-    catch (err) {
-        throw err;
-    }
-    finally {
-        if (conn) conn.release()
-    }
-
-    return res
+    // then do the query
+    return do_query(query);
 };
 
-export { get_books}
+export default get_books
