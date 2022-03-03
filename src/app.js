@@ -10,6 +10,8 @@ import get_rentals from './operations/get-rentals.js'
 import get_books_and_authors from './operations/get-books-and-authors.js'
 import get_books from './operations/get-books.js'
 import get_authors from './operations/get-authors.js'
+import post_members from './operations/post-members.js'
+import post_libraries from './operations/post-libraries.js'
 import post_author from './operations/post-author.js'
 import post_book from './operations/post-book.js'
 
@@ -86,13 +88,26 @@ app.get("/authors", async (req, res) => {
 
 ///////////////////////////////////////
 
+app.post("/members", async (req, res) => {
+
+    let payload = await post_members(req)
+
+    res.send(payload)
+})
+
+app.post("/libraries", async (req, res) => {
+
+    let payload = await post_libraries(req)
+
+    res.send(payload)
+})
+
 app.post("/books", async (req, res) => {
 
     let payload = await post_book(req)
 
     res.send(payload)
 })
-
 
 app.post("/authors", async (req, res) => {
 

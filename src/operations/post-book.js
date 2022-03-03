@@ -3,7 +3,7 @@
 import do_query from "./do-query.js";
 
 const post_book = async (req) => {
-    // this function CREATEs a new author in the Authors table
+    // this function CREATEs a new book in the Books table
 
     // first build the query
     let { isbn, book_title } = req.body;
