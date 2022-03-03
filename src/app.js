@@ -3,6 +3,10 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
+import get_members from './operations/get-members.js'
+import get_libraries from './operations/get-libraries.js'
+import get_transfers from './operations/get-transfers.js'
+import get_rentals from './operations/get-rentals.js'
 import get_books_and_authors from './operations/get-books-and-authors.js'
 import get_books from './operations/get-books.js'
 import get_authors from './operations/get-authors.js'
@@ -20,11 +24,40 @@ app.use(express.urlencoded({
 }))
 app.use(cors());
 
+
 ///////////////////////////////////////
 
 app.get("/", async (req, res) => {
 
     const payload = {"message": "You've reached the api root. Nothing to see here"}
+
+    res.send(payload)
+})
+
+app.get("/members", async (req, res) => {
+
+    let payload = await get_members(req)
+
+    res.send(payload)
+})
+
+app.get("/libraries", async (req, res) => {
+
+    let payload = await get_libraries(req)
+
+    res.send(payload)
+})
+
+app.get("/transfers", async (req, res) => {
+
+    let payload = await get_transfers(req)
+
+    res.send(payload)
+})
+
+app.get("/rentals", async (req, res) => {
+
+    let payload = await get_rentals(req)
 
     res.send(payload)
 })
@@ -43,6 +76,16 @@ app.get("/books", async (req, res) => {
     res.send(payload)
 })
 
+app.get("/authors", async (req, res) => {
+
+    let payload = await get_authors(req)
+
+    res.send(payload)
+})
+
+
+///////////////////////////////////////
+
 app.post("/books", async (req, res) => {
 
     let payload = await post_book(req)
@@ -50,12 +93,6 @@ app.post("/books", async (req, res) => {
     res.send(payload)
 })
 
-app.get("/authors", async (req, res) => {
-
-    let payload = await get_authors(req)
-
-    res.send(payload)
-})
 
 app.post("/authors", async (req, res) => {
 
@@ -70,6 +107,7 @@ app.post("/authors", async (req, res) => {
 
 
 ///////////////////////////////////////
+
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}...`)
 })
