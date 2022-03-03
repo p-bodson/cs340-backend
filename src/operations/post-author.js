@@ -7,7 +7,6 @@ const post_author = async (req) => {
 
     // first build the query
     let { author_name } = req.body;
-    console.log(author_name);  
     let query = `INSERT INTO Authors (author_name) VALUES ("${author_name}");`;  
 
     // then do the query

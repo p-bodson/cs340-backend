@@ -71,7 +71,7 @@ const get_books_and_authors = async (req) => {
     }
 
     // add the ordering
-    query += ` ORDER BY b.isbn ASC;`
+    query += ` ORDER BY b.isbn DESC;`
 
     // then do the query
     return do_query(query);
