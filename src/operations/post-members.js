@@ -7,7 +7,6 @@ const post_members = async (req) => {
 
     // first build the query
     let { member_first_name, member_last_name, member_phone } = req.body;
-    console.log(req.body)
     let query = `INSERT INTO Members (member_first_name, member_last_name, member_phone) 
     VALUES ("${member_first_name}", "${member_last_name}", "${member_phone}");`;
 
