@@ -3,7 +3,7 @@
 import do_query from "./do-query.js";
 
 const delete_books = async (req) => {
-    // this function UPDATEs a new book in the Books table
+    // this function DELETEs a new book in the Books table
 
     // first build the query
     let { isbn } = req.body;
