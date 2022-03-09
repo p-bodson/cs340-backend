@@ -19,10 +19,12 @@ import post_transfers from './operations/post-transfers.js'
 import post_rentals from './operations/post-rentals.js'
 import post_author from './operations/post-author.js'
 import post_book from './operations/post-book.js'
+import post_books_and_authors from './operations/post-books-and-authors.js'
 
 import put_books from './operations/put-books.js'
 
 import delete_books from './operations/delete-books.js'
+import delete_books_and_authors from './operations/delete-books-and-authors.js'
 
 
 
@@ -151,6 +153,17 @@ app.post("/authors", async (req, res) => {
     res.send(payload)
 })
 
+app.post("/books-and-authors", async (req, res) => {
+
+    let payload = await post_books_and_authors(req)
+
+    if (payload == undefined) {
+        payload = {}
+    }
+
+    res.send(payload)
+})
+
 //////////////////////////////////////
 
 app.put("/books", async (req, res) => {
@@ -165,6 +178,17 @@ app.put("/books", async (req, res) => {
 app.delete("/books", async (req, res) => {
 
     let payload = await delete_books(req)
+
+    res.send(payload)
+})
+
+app.delete("/books-and-authors", async (req, res) => {
+
+    let payload = await delete_books_and_authors(req)
+
+    if (payload == undefined) {
+        payload = {}
+    }
 
     res.send(payload)
 })
