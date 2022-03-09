@@ -3,6 +3,7 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
+
 import get_members from './operations/get-members.js'
 import get_libraries from './operations/get-libraries.js'
 import get_transfers from './operations/get-transfers.js'
@@ -11,12 +12,15 @@ import get_resources from './operations/get-resources.js'
 import get_books_and_authors from './operations/get-books-and-authors.js'
 import get_books from './operations/get-books.js'
 import get_authors from './operations/get-authors.js'
+
 import post_members from './operations/post-members.js'
 import post_libraries from './operations/post-libraries.js'
 import post_transfers from './operations/post-transfers.js'
 import post_rentals from './operations/post-rentals.js'
 import post_author from './operations/post-author.js'
 import post_book from './operations/post-book.js'
+
+import put_books from './operations/put-books.js'
 
 
 
@@ -140,6 +144,15 @@ app.post("/authors", async (req, res) => {
     if (payload == undefined) {
         payload = {}
     }
+
+    res.send(payload)
+})
+
+//////////////////////////////////////
+
+app.put("/books", async (req, res) => {
+
+    let payload = await put_books(req)
 
     res.send(payload)
 })
