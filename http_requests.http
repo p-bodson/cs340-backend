@@ -1,6 +1,8 @@
+### Test that backend is operational
+
 GET http://localhost:3003
 
-###
+### Test adding an author
 
 POST http://localhost:3003/authors HTTP/1.1
 Content-Type: application/json
@@ -13,7 +15,7 @@ Content-Type: application/json
 
 GET http://localhost:3003/authors
 
-###
+### Test adding, updating, and deleting a book
 
 POST http://localhost:3003/books HTTP/1.1
 Content-Type: application/json
@@ -33,7 +35,17 @@ PUT http://localhost:3003/books HTTP/1.1
 Content-Type: application/json
 
 {
-    "isbn": "978-0-123456-47-2",
-    "book_title": "An Afternoon to Spanghew Toads"
+    "isbn": "11111111-111",
+    "book_title": "NONO"
 }
 
+###
+
+DELETE http://localhost:3003/books HTTP/1.1
+Content-Type: application/json
+
+{
+    "isbn":"11111111-111"
+}
+
+###

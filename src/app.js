@@ -22,6 +22,9 @@ import post_book from './operations/post-book.js'
 
 import put_books from './operations/put-books.js'
 
+import delete_books from './operations/delete-books.js'
+
+
 
 
 const PORT = 3003
@@ -153,6 +156,15 @@ app.post("/authors", async (req, res) => {
 app.put("/books", async (req, res) => {
 
     let payload = await put_books(req)
+
+    res.send(payload)
+})
+
+//////////////////////////////////////
+
+app.delete("/books", async (req, res) => {
+
+    let payload = await delete_books(req)
 
     res.send(payload)
 })
