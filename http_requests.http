@@ -48,4 +48,45 @@ Content-Type: application/json
     "isbn":"11111111-111"
 }
 
+### Test connecting Books and Authors
+GET http://localhost:3003/books-and-authors
+
+###
+
+GET http://localhost:3003/books
+
+###
+
+GET http://localhost:3003/authors
+
+###
+
+POST http://localhost:3003/books-and-authors
+Content-Type: application/json
+
+{
+    "isbn": "978-0-123456-47-2",
+    "author_ID": "5"
+}
+
+###
+
+DELETE http://localhost:3003/books-and-authors HTTP/1.1
+Content-Type: application/json
+
+{
+    "isbn":"978-0-123456-47-2",
+    "author_ID": "5"
+}
+
+###
+
+DELETE http://localhost:3003/books-and-authors HTTP/1.1
+Content-Type: application/json
+
+{
+    "isbn":"978-0-123456-47-2",
+    "author_ID": "1"
+}
+
 ###
