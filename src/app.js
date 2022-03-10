@@ -25,11 +25,15 @@ import post_resources from './operations/post-resources.js'
 import put_books from './operations/put-books.js'
 import put_authors from './operations/put-authors.js'
 import put_resources from './operations/put-resources.js'
+import put_members from './operations/put-members.js'
+
 
 import delete_books from './operations/delete-books.js'
 import delete_authors from './operations/delete-authors.js'
 import delete_books_and_authors from './operations/delete-books-and-authors.js'
 import delete_resources from './operations/delete-resources.js'
+import delete_members from './operations/delete-members.js'
+
 
 
 const PORT = process.env.PORT;
@@ -214,6 +218,13 @@ app.put(paths.resources, async (req, res) => {
     res.send(payload)
 })
 
+app.put(paths.members, async (req, res) => {
+
+    let payload = await put_members(req)
+
+    res.send(payload)
+})
+
 //////////////////////////////////////
 
 app.delete(paths.books, async (req, res) => {
@@ -244,6 +255,12 @@ app.delete(paths.resources, async (req, res) => {
     res.send(payload)
 })
 
+app.delete(paths.members, async (req, res) => {
+
+    let payload = await delete_members(req)
+
+    res.send(payload)
+})
 
 ///////////////////////////////////////
 
