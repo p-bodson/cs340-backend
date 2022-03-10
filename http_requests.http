@@ -102,4 +102,39 @@ Content-Type: application/json
     "author_ID": "5"
 }
 
+### Test adding, updating, and deleting a resource
+
+GET http://localhost:3003/resources
+
 ###
+
+POST http://localhost:3003/resources HTTP/1.1
+Content-Type: application/json
+
+{
+    "isbn": "978-1-178456-79-4",
+    "library_ID": "3",
+    "quantity_available": "100"
+}
+
+###
+
+PUT http://localhost:3003/resources HTTP/1.1
+Content-Type: application/json
+
+{
+    "resource_ID": "4",
+    "isbn": "978-1-178456-79-4",
+    "library_ID": "3",
+    "quantity_available": "99",
+    "quantity_checked_out": "1"
+}
+
+###
+
+DELETE http://localhost:3003/resources HTTP/1.1
+Content-Type: application/json
+
+{
+    "resource_ID":"5"
+}
