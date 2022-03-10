@@ -138,3 +138,39 @@ Content-Type: application/json
 {
     "resource_ID":"5"
 }
+
+### Test adding, updating, and deleting a member
+
+GET http://localhost:3003/members
+
+###
+
+POST http://localhost:3003/members HTTP/1.1
+Content-Type: application/json
+
+{
+    "member_first_name": "Lorn",
+    "member_last_name": "For",
+    "member_phone": "555-5555"
+}
+
+###
+
+PUT http://localhost:3003/members HTTP/1.1
+Content-Type: application/json
+
+{
+    "member_ID": "4",
+    "member_first_name": "Lorne",
+    "member_last_name": "Meta",
+    "member_phone": "555-5555-6"
+}
+
+###
+
+DELETE http://localhost:3003/members HTTP/1.1
+Content-Type: application/json
+
+{
+    "member_ID":"4"
+}
