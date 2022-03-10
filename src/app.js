@@ -8,17 +8,19 @@ import get_members from './operations/get-members.js'
 import get_libraries from './operations/get-libraries.js'
 import get_transfers from './operations/get-transfers.js'
 import get_rentals from './operations/get-rentals.js'
+import get_transfer_items from './operations/get-transfer-items.js'
+import get_rental_items from './operations/get-rental-items.js'
 import get_resources from './operations/get-resources.js'
 import get_books_and_authors from './operations/get-books-and-authors.js'
 import get_books from './operations/get-books.js'
 import get_authors from './operations/get-authors.js'
-import get_transfer_items from './operations/get-transfer-items.js'
-import get_rental_items from './operations/get-rental-items.js'
 
 import post_members from './operations/post-members.js'
 import post_libraries from './operations/post-libraries.js'
 import post_transfers from './operations/post-transfers.js'
 import post_rentals from './operations/post-rentals.js'
+import post_transfer_items from './operations/post-transfer-items.js'
+import post_rental_items from './operations/post-rental-items.js'
 import post_author from './operations/post-author.js'
 import post_book from './operations/post-book.js'
 import post_books_and_authors from './operations/post-books-and-authors.js'
@@ -61,10 +63,10 @@ const paths = {
     "libraries": `${ROOT}libraries`,
     "transfers": `${ROOT}transfers`,
     "rentals": `${ROOT}rentals`,
-    "resources": `${ROOT}resources`,
-    "books_and_authors": `${ROOT}books-and-authors`,
     "rental_items": `${ROOT}rental-items*`,
-    "transfer_items": `${ROOT}transfer-items*`
+    "transfer_items": `${ROOT}transfer-items*`,
+    "resources": `${ROOT}resources`,
+    "books_and_authors": `${ROOT}books-and-authors`
 }
 
 
@@ -105,6 +107,20 @@ app.get(paths.rentals, async (req, res) => {
     res.send(payload)
 })
 
+app.get(paths.transfer_items, async (req, res) => {
+
+    let payload = await get_transfer_items(req)
+
+    res.send(payload)
+})
+
+app.get(paths.rental_items, async (req, res) => {
+
+    let payload = await get_rental_items(req)
+
+    res.send(payload)
+})
+
 app.get(paths.resources, async (req, res) => {
 
     let payload = await get_resources(req)
@@ -133,21 +149,6 @@ app.get(paths.authors, async (req, res) => {
     res.send(payload)
 })
 
-app.get(paths.transfer_items, async (req, res) => {
-
-    let payload = await get_transfer_items(req)
-
-    res.send(payload)
-})
-
-app.get(paths.rental_items, async (req, res) => {
-
-    let payload = await get_rental_items(req)
-
-    res.send(payload)
-})
-
-
 ///////////////////////////////////////
 
 app.post(paths.members, async (req, res) => {
@@ -174,6 +175,20 @@ app.post(paths.transfers, async (req, res) => {
 app.post(paths.rentals, async (req, res) => {
 
     let payload = await post_rentals(req)
+
+    res.send(payload)
+})
+
+app.post(paths.transfer_items, async (req, res) => {
+
+    let payload = await post_transfer_items(req)
+
+    res.send(payload)
+})
+
+app.post(paths.rental_items, async (req, res) => {
+
+    let payload = await post_rental_items(req)
 
     res.send(payload)
 })

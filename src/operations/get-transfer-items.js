@@ -16,7 +16,7 @@ const get_transfer_items = async (req) => {
     let { transfer_ID,
     resource_ID,
     quantity,
-    transfer_item_status } = req.query;
+    transfer_item_status} = req.query;
 
     // search for good keys
     const query_keys = Object.keys(req.query);
@@ -30,7 +30,7 @@ const get_transfer_items = async (req) => {
     })
     
     // build the query based on query parameters
-    let query = `SELECT transfer_ID, resource_ID, quantity, transfer_item_status 
+    let query = `SELECT transfer_ID, resource_ID, queue_numb, transfer_item_status, return_date 
     FROM Transfer_Items`;
 
     const parameter_length = good_keys.length;
