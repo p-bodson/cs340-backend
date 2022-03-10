@@ -22,14 +22,14 @@ import post_book from './operations/post-book.js'
 import post_books_and_authors from './operations/post-books-and-authors.js'
 
 import put_books from './operations/put-books.js'
+import put_authors from './operations/put-authors.js'
 
 import delete_books from './operations/delete-books.js'
+import delete_authors from './operations/delete-authors.js'
 import delete_books_and_authors from './operations/delete-books-and-authors.js'
 
 
-
-
-const PORT = 3003
+const PORT = process.env.PORT;
 const app = express();
 
 app.use(express.json());
@@ -38,66 +38,79 @@ app.use(express.urlencoded({
 }))
 app.use(cors());
 
+const ROOT = "/"
+
+const paths = {
+    "members": `${ROOT}members`,
+    "books": `${ROOT}books`,
+    "authors": `${ROOT}authors`,
+    "libraries": `${ROOT}libraries`,
+    "transfers": `${ROOT}transfers`,
+    "rentals": `${ROOT}rentals`,
+    "resources": `${ROOT}resources`,
+    "books_and_authors": `${ROOT}books-and-authors`
+}
+
 
 ///////////////////////////////////////
 
-app.get("/", async (req, res) => {
+app.get(ROOT, async (req, res) => {
 
     const payload = {"message": "You've reached the api root. Nothing to see here"}
 
     res.send(payload)
 })
 
-app.get("/members", async (req, res) => {
+app.get(paths.members, async (req, res) => {
 
     let payload = await get_members(req)
 
     res.send(payload)
 })
 
-app.get("/libraries", async (req, res) => {
+app.get(paths.libraries, async (req, res) => {
 
     let payload = await get_libraries(req)
 
     res.send(payload)
 })
 
-app.get("/transfers", async (req, res) => {
+app.get(paths.transfers, async (req, res) => {
 
     let payload = await get_transfers(req)
 
     res.send(payload)
 })
 
-app.get("/rentals", async (req, res) => {
+app.get(paths.rentals, async (req, res) => {
 
     let payload = await get_rentals(req)
 
     res.send(payload)
 })
 
-app.get("/resources", async (req, res) => {
+app.get(paths.resources, async (req, res) => {
 
     let payload = await get_resources(req)
 
     res.send(payload)
 })
 
-app.get("/books-and-authors", async (req, res) => {
+app.get(paths.books_and_authors, async (req, res) => {
 
     let payload = await get_books_and_authors(req)
 
     res.send(payload)
 })
 
-app.get("/books", async (req, res) => {
+app.get(paths.books, async (req, res) => {
 
     let payload = await get_books(req)
 
     res.send(payload)
 })
 
-app.get("/authors", async (req, res) => {
+app.get(paths.authors, async (req, res) => {
 
     let payload = await get_authors(req)
 
@@ -107,42 +120,42 @@ app.get("/authors", async (req, res) => {
 
 ///////////////////////////////////////
 
-app.post("/members", async (req, res) => {
+app.post(paths.members, async (req, res) => {
 
     let payload = await post_members(req)
 
     res.send(payload)
 })
 
-app.post("/libraries", async (req, res) => {
+app.post(paths.libraries, async (req, res) => {
 
     let payload = await post_libraries(req)
 
     res.send(payload)
 })
 
-app.post("/transfers", async (req, res) => {
+app.post(paths.transfers, async (req, res) => {
 
     let payload = await post_transfers(req)
 
     res.send(payload)
 })
 
-app.post("/rentals", async (req, res) => {
+app.post(paths.rentals, async (req, res) => {
 
     let payload = await post_rentals(req)
 
     res.send(payload)
 })
 
-app.post("/books", async (req, res) => {
+app.post(paths.books, async (req, res) => {
 
     let payload = await post_book(req)
 
     res.send(payload)
 })
 
-app.post("/authors", async (req, res) => {
+app.post(paths.authors, async (req, res) => {
 
     let payload = await post_author(req)
 
@@ -153,7 +166,7 @@ app.post("/authors", async (req, res) => {
     res.send(payload)
 })
 
-app.post("/books-and-authors", async (req, res) => {
+app.post(paths.books_and_authors, async (req, res) => {
 
     let payload = await post_books_and_authors(req)
 
@@ -166,23 +179,37 @@ app.post("/books-and-authors", async (req, res) => {
 
 //////////////////////////////////////
 
-app.put("/books", async (req, res) => {
+app.put(paths.books, async (req, res) => {
 
     let payload = await put_books(req)
 
     res.send(payload)
 })
 
+app.put(paths.authors, async (req, res) => {
+
+    let payload = await put_authors(req)
+
+    res.send(payload)
+})
+
 //////////////////////////////////////
 
-app.delete("/books", async (req, res) => {
+app.delete(paths.books, async (req, res) => {
 
     let payload = await delete_books(req)
 
     res.send(payload)
 })
 
-app.delete("/books-and-authors", async (req, res) => {
+app.delete(paths.authors, async (req, res) => {
+
+    let payload = await delete_authors(req)
+
+    res.send(payload)
+})
+
+app.delete(paths.books_and_authors, async (req, res) => {
 
     let payload = await delete_books_and_authors(req)
 

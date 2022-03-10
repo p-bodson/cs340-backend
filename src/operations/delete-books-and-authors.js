@@ -3,7 +3,7 @@
 import do_query from "./do-query.js";
 
 const delete_books_and_authors = async (req) => {
-    // this function DELETEs a new book in the Books table
+    // this function DELETEs a books_authors relationshiop in the Books_Authors table
 
     // first build the query
     let { isbn, author_ID} = req.body;
