@@ -244,3 +244,39 @@ Content-Type: application/json
 {
     "rental_ID":"3"
 }
+
+### Test adding, updating, and deleting a transfer
+
+GET http://localhost:3003/transfers
+
+###
+
+POST http://localhost:3003/transfers HTTP/1.1
+Content-Type: application/json
+
+{
+    "source_library_ID": "2",
+    "destination_library_ID": "3",
+    "transfer_date": "2021-12-10"
+}
+
+###
+
+PUT http://localhost:3003/transfers HTTP/1.1
+Content-Type: application/json
+
+{
+    "transfer_ID": "3",
+    "source_library_ID": "1",
+    "destination_library_ID": "3",
+    "transfer_date": "2021-02-10"
+}
+
+###
+
+DELETE http://localhost:3003/transfers HTTP/1.1
+Content-Type: application/json
+
+{
+    "transfer_ID":"3"
+}

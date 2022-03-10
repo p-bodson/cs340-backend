@@ -28,6 +28,7 @@ import put_resources from './operations/put-resources.js'
 import put_members from './operations/put-members.js'
 import put_libraries from './operations/put-libraries.js'
 import put_rentals from './operations/put-rentals.js'
+import put_transfers from './operations/put-transfers.js'
 
 
 import delete_books from './operations/delete-books.js'
@@ -37,6 +38,7 @@ import delete_resources from './operations/delete-resources.js'
 import delete_members from './operations/delete-members.js'
 import delete_libraries from './operations/delete-libraries.js'
 import delete_rentals from './operations/delete-rentals.js'
+import delete_transfers from './operations/delete-transfers.js'
 
 
 const PORT = process.env.PORT;
@@ -242,6 +244,13 @@ app.put(paths.rentals, async (req, res) => {
     res.send(payload)
 })
 
+app.put(paths.transfers, async (req, res) => {
+
+    let payload = await put_transfers(req)
+
+    res.send(payload)
+})
+
 //////////////////////////////////////
 
 app.delete(paths.books, async (req, res) => {
@@ -289,6 +298,13 @@ app.delete(paths.libraries, async (req, res) => {
 app.delete(paths.rentals, async (req, res) => {
 
     let payload = await delete_rentals(req)
+
+    res.send(payload)
+})
+
+app.delete(paths.transfers, async (req, res) => {
+
+    let payload = await delete_transfers(req)
 
     res.send(payload)
 })
