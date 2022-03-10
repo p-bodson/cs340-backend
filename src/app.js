@@ -62,7 +62,9 @@ const paths = {
     "transfers": `${ROOT}transfers`,
     "rentals": `${ROOT}rentals`,
     "resources": `${ROOT}resources`,
-    "books_and_authors": `${ROOT}books-and-authors`
+    "books_and_authors": `${ROOT}books-and-authors`,
+    "rental_items": `${ROOT}rental-items*`,
+    "transfer_items": `${ROOT}transfer-items*`
 }
 
 
@@ -76,7 +78,7 @@ app.get(ROOT, async (req, res) => {
 })
 
 app.get(paths.members, async (req, res) => {
-
+    
     let payload = await get_members(req)
 
     res.send(payload)
@@ -131,14 +133,14 @@ app.get(paths.authors, async (req, res) => {
     res.send(payload)
 })
 
-app.get("/transfer_items", async (req, res) => {
+app.get(paths.transfer_items, async (req, res) => {
 
     let payload = await get_transfer_items(req)
 
     res.send(payload)
 })
 
-app.get("/rental_items", async (req, res) => {
+app.get(paths.rental_items, async (req, res) => {
 
     let payload = await get_rental_items(req)
 
