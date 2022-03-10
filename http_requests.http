@@ -174,3 +174,37 @@ Content-Type: application/json
 {
     "member_ID":"4"
 }
+
+### Test adding, updating, and deleting a library
+
+GET http://localhost:3003/libraries
+
+###
+
+POST http://localhost:3003/libraries HTTP/1.1
+Content-Type: application/json
+
+{
+    "library_name": "Smithson",
+    "library_address": "123 ABC Dr."
+}
+
+###
+
+PUT http://localhost:3003/libraries HTTP/1.1
+Content-Type: application/json
+
+{
+    "library_ID": "4",
+    "library_name": "Smithsonian",
+    "library_address": "123 XYZ Ave."
+}
+
+###
+
+DELETE http://localhost:3003/libraries HTTP/1.1
+Content-Type: application/json
+
+{
+    "library_ID":"4"
+}
