@@ -208,3 +208,39 @@ Content-Type: application/json
 {
     "library_ID":"4"
 }
+
+### Test adding, updating, and deleting a rental
+
+GET http://localhost:3003/rentals
+
+###
+
+POST http://localhost:3003/rentals HTTP/1.1
+Content-Type: application/json
+
+{
+    "member_ID": "2",
+    "library_ID": "3",
+    "rental_date": "2021-02-10"
+}
+
+###
+
+PUT http://localhost:3003/rentals HTTP/1.1
+Content-Type: application/json
+
+{
+    "rental_ID": "3",
+    "library_ID": "1",
+    "member_ID": "3",
+    "rental_date": "2021-02-10"
+}
+
+###
+
+DELETE http://localhost:3003/rentals HTTP/1.1
+Content-Type: application/json
+
+{
+    "rental_ID":"3"
+}
