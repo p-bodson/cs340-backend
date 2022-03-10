@@ -11,6 +11,8 @@ import get_resources from './operations/get-resources.js'
 import get_books_and_authors from './operations/get-books-and-authors.js'
 import get_books from './operations/get-books.js'
 import get_authors from './operations/get-authors.js'
+import get_transfer_items from './operations/get-transfer-items.js'
+import get_rental_items from './operations/get-rental-items.js'
 import post_members from './operations/post-members.js'
 import post_libraries from './operations/post-libraries.js'
 import post_transfers from './operations/post-transfers.js'
@@ -91,6 +93,20 @@ app.get("/books", async (req, res) => {
 app.get("/authors", async (req, res) => {
 
     let payload = await get_authors(req)
+
+    res.send(payload)
+})
+
+app.get("/transfer_items", async (req, res) => {
+
+    let payload = await get_transfer_items(req)
+
+    res.send(payload)
+})
+
+app.get("/rental_items", async (req, res) => {
+
+    let payload = await get_rental_items(req)
 
     res.send(payload)
 })
