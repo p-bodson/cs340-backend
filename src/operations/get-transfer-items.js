@@ -30,7 +30,7 @@ const get_transfer_items = async (req) => {
     })
     
     // build the query based on query parameters
-    let query = `SELECT transfer_ID, resource_ID, queue_numb, transfer_item_status, return_date 
+    let query = `SELECT transfer_ID, resource_ID, quantity, transfer_item_status
     FROM Transfer_Items`;
 
     const parameter_length = good_keys.length;
