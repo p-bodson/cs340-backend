@@ -6,11 +6,12 @@ const put_rental_items = async (req) => {
 
     // first build the query
     let { rental_ID, resource_ID, queue_numb, rental_item_status, return_date } = req.body;
+    if (return_date === "") return_date = null;
 
     let query = `UPDATE Rental_Items
     SET queue_numb="${queue_numb}",
     rental_item_status="${rental_item_status}", 
-    return_date="${return_date}"
+    return_date=${return_date}
     WHERE rental_ID=${rental_ID} AND resource_ID="${resource_ID}";`;
 
     // then do the query

@@ -7,8 +7,9 @@ const post_rental_items = async (req) => {
 
     // first build the query
     let { rental_ID, resource_ID, queue_numb, rental_item_status, return_date } = req.body;
+    if (return_date === "") return_date = null;
     let query = `INSERT INTO Rental_Items (rental_ID, resource_ID, queue_numb, rental_item_status, return_date) 
-    VALUES ("${rental_ID}", "${resource_ID}", "${queue_numb}", "${rental_item_status}", "${return_date}");`;
+    VALUES ("${rental_ID}", "${resource_ID}", "${queue_numb}", "${rental_item_status}", ${return_date});`;
 
     // then do the query
     return do_query(query);
