@@ -128,6 +128,15 @@ app.get(paths.rental_items, async (req, res) => {
 
     let payload = await get_rental_items(req)
 
+    // turn return date into an ISO date string for
+    // frontend of form YYYY-MM-DD
+    for (const rental_item of payload) {
+        let date = rental_item["return_date"];
+        if (date !== null) {
+            rental_item["return_date"] = date.toISOString().slice(0,10);
+        }
+    }
+
     res.send(payload)
 })
 
