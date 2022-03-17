@@ -45,9 +45,9 @@ const get_resources = async (req) => {
             r.quantity_available,
             r.quantity_checked_out
         FROM Resources AS r 
-        RIGHT JOIN Books AS b 
+        JOIN Books AS b 
         ON r.isbn=b.isbn
-        RIGHT JOIN Libraries AS l
+        JOIN Libraries AS l
         ON r.library_ID=l.library_ID`;
 
     const parameter_length = good_keys.length;
