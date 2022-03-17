@@ -6,9 +6,7 @@ import cors from 'cors'
 
 import get_members from './operations/get-members.js'
 import get_libraries from './operations/get-libraries.js'
-import get_transfers from './operations/get-transfers.js'
 import get_rentals from './operations/get-rentals.js'
-import get_transfer_items from './operations/get-transfer-items.js'
 import get_rental_items from './operations/get-rental-items.js'
 import get_resources from './operations/get-resources.js'
 import get_books_and_authors from './operations/get-books-and-authors.js'
@@ -17,9 +15,7 @@ import get_authors from './operations/get-authors.js'
 
 import post_members from './operations/post-members.js'
 import post_libraries from './operations/post-libraries.js'
-import post_transfers from './operations/post-transfers.js'
 import post_rentals from './operations/post-rentals.js'
-import post_transfer_items from './operations/post-transfer-items.js'
 import post_rental_items from './operations/post-rental-items.js'
 import post_author from './operations/post-author.js'
 import post_book from './operations/post-book.js'
@@ -33,7 +29,6 @@ import put_members from './operations/put-members.js'
 import put_libraries from './operations/put-libraries.js'
 import put_rentals from './operations/put-rentals.js'
 import put_rental_items from './operations/put-rental-items.js'
-import put_transfers from './operations/put-transfers.js'
 
 import delete_books from './operations/delete-books.js'
 import delete_authors from './operations/delete-authors.js'
@@ -43,7 +38,6 @@ import delete_members from './operations/delete-members.js'
 import delete_libraries from './operations/delete-libraries.js'
 import delete_rentals from './operations/delete-rentals.js'
 import delete_rental_items from './operations/delete-rental-items.js'
-import delete_transfers from './operations/delete-transfers.js'
 
 
 const PORT = process.env.PORT;
@@ -62,10 +56,8 @@ const paths = {
     "books": `${ROOT}books`,
     "authors": `${ROOT}authors`,
     "libraries": `${ROOT}libraries`,
-    "transfers": `${ROOT}transfers`,
     "rentals": `${ROOT}rentals`,
     "rental_items": `${ROOT}rental-items*`,
-    "transfer_items": `${ROOT}transfer-items*`,
     "resources": `${ROOT}resources`,
     "books_and_authors": `${ROOT}books-and-authors`
 }
@@ -94,13 +86,6 @@ app.get(paths.libraries, async (req, res) => {
     res.send(payload)
 })
 
-app.get(paths.transfers, async (req, res) => {
-
-    let payload = await get_transfers(req)
-
-    res.send(payload)
-})
-
 app.get(paths.rentals, async (req, res) => {
 
     let payload = await get_rentals(req)
@@ -113,13 +98,6 @@ app.get(paths.rentals, async (req, res) => {
             rental["rental_date"] = date.toISOString().slice(0,10);
         }
     }
-
-    res.send(payload)
-})
-
-app.get(paths.transfer_items, async (req, res) => {
-
-    let payload = await get_transfer_items(req)
 
     res.send(payload)
 })
@@ -184,23 +162,10 @@ app.post(paths.libraries, async (req, res) => {
     res.send(payload)
 })
 
-app.post(paths.transfers, async (req, res) => {
-
-    let payload = await post_transfers(req)
-
-    res.send(payload)
-})
 
 app.post(paths.rentals, async (req, res) => {
 
     let payload = await post_rentals(req)
-
-    res.send(payload)
-})
-
-app.post(paths.transfer_items, async (req, res) => {
-
-    let payload = await post_transfer_items(req)
 
     res.send(payload)
 })
@@ -303,13 +268,6 @@ app.put(paths.rental_items, async (req, res) => {
     res.send(payload)
 })
 
-app.put(paths.transfers, async (req, res) => {
-
-    let payload = await put_transfers(req)
-
-    res.send(payload)
-})
-
 //////////////////////////////////////
 
 app.delete(paths.books, async (req, res) => {
@@ -364,13 +322,6 @@ app.delete(paths.rentals, async (req, res) => {
 app.delete(paths.rental_items, async (req, res) => {
 
     let payload = await delete_rental_items(req)
-
-    res.send(payload)
-})
-
-app.delete(paths.transfers, async (req, res) => {
-
-    let payload = await delete_transfers(req)
 
     res.send(payload)
 })
