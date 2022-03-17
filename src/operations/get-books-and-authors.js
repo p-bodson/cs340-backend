@@ -37,7 +37,7 @@ const get_books_and_authors = async (req) => {
         FROM Books AS b 
         JOIN Books_Authors AS ba 
         ON b.isbn=ba.isbn 
-        RIGHT JOIN Authors AS a  
+        JOIN Authors AS a  
         ON ba.author_id=a.author_id`;
 
     const parameter_length = good_keys.length;

@@ -58,7 +58,7 @@ PUT http://localhost:3003/authors HTTP/1.1
 Content-Type: application/json
 
 {
-    "author_ID": "7",
+    "author_ID": "8",
     "author_name": "Yates"
 }
 
@@ -279,4 +279,36 @@ Content-Type: application/json
 
 {
     "transfer_ID":"3"
+}
+
+### Test adding, updating, and deleting an author
+
+POST https://api.liamgombart.com/authors HTTP/1.1
+Content-Type: application/json
+
+{
+    "author_name": "Yeets"
+}
+
+###
+
+GET https://api.liamgombart.com/authors
+
+###
+
+PUT https://api.liamgombart.com/authors HTTP/1.1
+Content-Type: application/json
+
+{
+    "author_ID": "8",
+    "author_name": "Yates"
+}
+
+###
+
+DELETE https://api.liamgombart.com/authors HTTP/1.1
+Content-Type: application/json
+
+{
+    "author_ID":"7"
 }
