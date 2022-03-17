@@ -105,6 +105,15 @@ app.get(paths.rentals, async (req, res) => {
 
     let payload = await get_rentals(req)
 
+    // turn rental date into an ISO date string for
+    // frontend of form YYYY-MM-DD
+    for (const rental of payload) {
+        let date = rental["rental_date"];
+        if (date !== null) {
+            rental["rental_date"] = date.toISOString().slice(0,10);
+        }
+    }
+
     res.send(payload)
 })
 
